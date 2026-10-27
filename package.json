@@ -1,0 +1,34 @@
+{
+  "name": "dsh-recued",
+  "version": "0.1.0",
+  "description": "Connects DeepSeek Harness to your own Recued server over MCP: the agent reads your notes, tasks and the things you own, and a change it asks for waits for your approval in Recued.",
+  "keywords": [
+    "dsh",
+    "dsh-plugin",
+    "deepseek-harness",
+    "mcp",
+    "recued"
+  ],
+  "homepage": "https://github.com/recued/dsh-recued#readme",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/recued/dsh-recued.git"
+  },
+  "license": "MIT",
+  "files": [
+    "cordis.patch.yml",
+    "README.md",
+    "LICENSE"
+  ],
+  "engines": {
+    "dsh": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "peerDependencies": {
+    "@deepseek-ai/dsh-mcp-client": ">=0.2.1-rc.2 <0.3.0"
+  },
+  "dsh": {
+    "bundle": {
+      "patch": "./cordis.patch.yml"
+    }
+  }
+}

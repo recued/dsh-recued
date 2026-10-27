@@ -1,0 +1,23 @@
+# dsh-recued — Recued as an MCP server for DeepSeek Harness.
+#
+# Adds one row of DeepSeek Harness's own MCP client, pointed at your Recued
+# server. Recued's tools then appear as `mcp__recued__<tool>`.
+#
+#   RECUED_MCP_TOKEN  the key of a contract you make for DeepSeek Harness in the
+#                     Recued web app. Without it the row stays off.
+#   RECUED_MCP_URL    the server's MCP address; defaults to the server on this
+#                     computer.
+#
+# The key is read from the environment when DeepSeek Harness starts, so it is
+# never written into this file or your profile.
+
+- insert:
+    - id: recued
+      name: '@deepseek-ai/dsh-mcp-client'
+      disabled: !!js '!process.env.RECUED_MCP_TOKEN'
+      config:
+        serverName: recued
+        transport: streamable-http
+        url: !!js process.env.RECUED_MCP_URL || 'http://127.0.0.1:7717/mcp'
+        headers:
+          Authorization: !!js '`Bearer ${process.env.RECUED_MCP_TOKEN}`'
